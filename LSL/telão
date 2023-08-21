@@ -1,0 +1,59 @@
+integer gIntegerChannel = -6666;
+integer gIntegerHUDChannel;
+integer gIntegerOldListener;
+
+key gKeyID = NULL_KEY;
+
+default
+{
+    
+    state_entry()
+    {
+        
+        llSetTexture( "ae197897-5cc6-8c8b-6e8c-dd487a5c73d9" , 0 );
+        
+        gIntegerChannel = llCeil( -1000 * llFrand( 1.0 ) );
+        
+        llSay( -6666 , "CHANNEL|" + (string)gIntegerChannel);
+        
+        gIntegerOldListener = llListen( gIntegerChannel , "" , "" , ""  );   
+        
+        llSay( PUBLIC_CHANNEL , "Starting!" ); 
+        
+    }
+    
+    listen( integer pIntegerChannel , string pStringName , key pKeyID , string pStringMessage )
+    {
+        
+        if( ( pIntegerChannel == gIntegerChannel ) && ( llGetOwnerKey( pKeyID ) == llGetOwner() ) && ( llGetSubString( pStringMessage , 0 , llStringLength( "CHANNEL|" ) - 1 ) == "CHANNEL|" )  && ( gKeyID == NULL_KEY ) ) 
+        {
+
+            gIntegerChannel == (integer)llGetSubString( pStringMessage , llStringLength( "CHANNEL|" ) - 1 , llStringLength( pStringMessage ) );                    
+            
+            gIntegerHUDChannel = gIntegerChannel + 1;
+
+            llListenRemove( gIntegerOldListener );        
+
+            gIntegerOldListener = llListen( gIntegerChannel , "" , pKeyID , "" );
+            
+            gKeyID = pKeyID;
+                    
+        }
+        else if ( ( llGetSubString( pStringMessage , 0 , llStringLength( "TEXTURE|" ) - 1 ) ) == "TEXTURE|" && ( llGetOwnerKey( pKeyID ) == llGetOwner() ) && ( pIntegerChannel == gIntegerChannel  ) )
+        {
+
+            llSetTexture( llGetSubString( pStringMessage , llStringLength( "TEXTURE|" ) , llStringLength( pStringMessage ) ) , 0 );
+        
+        }
+                
+    }
+        
+    on_rez( integer pIntegerParam )
+    {
+        
+        llResetScript();
+    
+    }
+    
+}
+

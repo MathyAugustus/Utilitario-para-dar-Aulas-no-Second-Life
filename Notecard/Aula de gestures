@@ -1,0 +1,495 @@
+TEXTURE|25ec13ad-d7c4-e0b2-50c4-6a71d3dd891f
+
+Aula de Gestures - por Augustus Mathy
+
+INTRODUÇÃO
+
+Esta aula está dividida em 9 itens:
+
+1-O que são Gestos?
+2-Preparando a barra de ferramentas para trabalhar com gestos ( adição do botão gestos ).
+3-A janela Gestos.
+4-A janela novo gesto.
+5-Criando gestos.
+6-Exemplo prático ( meu Ctrl F2 ).
+7-Criando os gestos ( sim / não ).
+8-Preferências ( CTRL + P )
+Apêndice A - Criando Animação ( QAVIMATOR ).
+Apêndice B - Criando sons ( AUDACITY ).
+Apêndice C - Alguns links úteis.
+9-Considerações finais.
+
+Está aula é baseada em viewer versão 3 oficial da Linden Labs.
+
+Parte 1 - O que são Gestos?
+
+Um Gesto é um modo de animar , entre elas:
+1-Produzindo sons.
+2-Utilizando animações.
+3-Enviando textos ao chat público.
+
+Num Gesto podemos usar a combinação de todas as formas conforme seu gosto.
+
+Um Gesto pode ser acionado através de um atalho e/ou um gatilho.
+
+Um atalho é uma combinação de teclas 
+ex.<CTRL><SHIFT><F2>
+
+Nos atalhos de um Gesto você pode usar uma combinação de teclas <CTRL> OU <SHIFT> E Fs
+
+Os Fs ficam em cima de seu teclado e o F1 é utilizado apenas para ser visualizada a ajuda do sl.
+
+Gatilhos são palavras do chat que quando ditas disparam um Gesto.
+
+Entraremos em maiores detalhes sobre gatilhos e atalhos posteriormente.
+
+Parte 2 - Preparando a barra de ferramentas para trabalhar com gestures ( adição do botão gestos ).
+
+TEXTURE|f40b1083-6955-f25f-74b7-76c0bd3f5a56
+
+Primeiramente localize a barra de ferramentas inferior do sl.
+
+Clique no botão direito do mouse e escolha "Botões da barra de ferramentas".
+
+TEXTURE|9701ac12-a737-ea77-52ed-fd7ace776ef2
+
+Aparece a janela "BOTÕES DA BARRA DE FERRAMENTAS"
+
+Clique no botão Gestos arraste até a barra de ferramentas inferior.
+
+Feche a janela "BOTÕES DA BARRA DE FERRAMENTAS" clicando no "x" da janela no lado superior direito.
+
+Caso queira economizar espaço na barra de ferramentas inferior faça o seguinte:
+
+TEXTURE|d3b41074-7327-674c-76fe-5df9c877402c
+
+Clique no botão direito em cima da barra de ferramentas inferior e , no menu , escolha "Somente ícones".
+
+A barra de ferramentas está agora preparada para uso com os gestos ( Gestures ).
+
+Parte 3 - A janela Gestos.
+
+TEXTURE|47e46983-02d5-b002-488b-a055f30cc70f
+
+A janela Gestos nos ajuda a gerenciar o funcionamento dos Gestos.
+
+As Gestures apenas funcionam se estiverem ativadas e para isso você tem de selecionar uma gesture apertar o "v" ... isso se chama ativar a Gesture.
+
+Outra forma de deixar a Gesture ativa é clicar no botão com ícone de engrenagem e , no menu que aparece , escolher a opção "Adicionar/remover dos favoritos".
+
+Temos ainda na janela gestos um "+" que serve para criar um Gesto e , para isso , abre a janela "Novo Gesto".
+ 
+TEXTURE|cb8e460a-a8a4-f611-7bf5-5e633d33889b
+
+No botão com ícone de engrenagem , temos as opções:
+
+3.1-Adicionar/remover gestos
+3.2-Copiar
+3.3-Colar
+3.4-Copiar UUID
+3.5-Salvar para look atual
+3.6-Editar
+
+3.1-Adicionar/remover gestos
+
+Como vimos acima , esta opção apenas serve para ativar e desativar a Gesture selecionada.
+
+3.2-Copiar
+
+Copia a Gesture selecionada para a área de transferência.
+
+3.3-Colar
+
+Cola Gesture da área de transferência
+
+3.4-Copiar UUID
+
+Copia a chave da Gesture selecionada
+
+O UUID aqui é um identificador único que é atrbuído a algum item do sl ( avatar , textura , som , objeto , "Gesto" ,... ) tudo no sl tem uma UUID.
+
+Por exemplo , o UUID de minha gesture "sim" é 199f64c9-2538-23e2-58d5-aa54a4122cff
+
+<<<Verificar inhformação>>>
+Você pode referênciar algum item através de sua UUID , por exemplo , em um script LSL de vendor.É uma forma interessante de colocar a venda a Gesture sem que ela esteja dentro do vendor.
+<<<Necessário a verificação desta informação>>>
+
+3.5-Salvar para look atual
+
+Está opção salva a Gesture em seu look atual para ser usada com mais praticidade.
+
+3.6-Editar
+
+Edita a Gesture selecionada na janela Gestos , abrindo uma janela igual a Novo gesto.
+
+Mais em baixo temos o botão Editar que faz o que nos referimos logo acima.
+
+E finalmente 
+
+O botão executar que dispara , ( coloca em funcionamento ) a Gesture selecionada.
+
+TEXTURE|a573ce39-2d01-22af-dfa3-ad6c1f6b12f0
+
+Parte 4 - A janela novo gesto.
+
+Você consegue criar uma Gesture clicando no "+" na janela gestos e esta abre Novo Gesto
+
+Ela tem os seguintes conponentes:
+
+4.1 - Descrição
+
+4.2 - Gatilho
+
+4.3 - Trocar por
+
+4.4 - Atalho
+
+4.5 - Biblioteca
+4.5.i - Animação
+4.5.ii - Som
+4.5.iii - Bate papo
+4.5.iv - Espere
+
+4.6 - Botão Incluir
+
+4.7 - Passos
+
+4.8 - P/cima
+
+4.9 - P/baixo
+
+4.10 - Remover
+
+4.11 - Ativar
+
+4.12 - Prévia
+
+4.13 - Salvar
+
+vamos por partes:
+
+TEXTURE|198a1a07-cf97-80d1-16a7-1c0628027c97
+
+4.1 - Descrição
+
+É um campo de texto livre usado para que você descreva o Gesto que está criando.
+
+4.2 - Gatilho
+
+Um gatilho é uma palavra ou texto que dispara ( coloca em funcionamento ) o Gesto com este texto.
+
+4.3 - Trocar por
+
+Este campo é usado para quando for detectado o gatilho no chat público este seja trocado no chat público pelo texto deste campo.
+
+4.4 - Atalho
+
+Como vimos acima:
+
+Nos atalhos de uma Gesture você pode usar uma combinação de teclas <CTRL> OU <ALT> E Fs
+
+Os Fs ficam em cima de seu teclado e o F1 é utilizado apenas para ser visualizada a ajuda do sl.
+
+Eu faço assim ... tudo que tem ctrl eu uso aqui na ilha 
+Ex.<Ctrl><F2> , <CTRL><F3> , <CTRL><F4> , <CTRL><F5> , ...
+
+São Gestos que uso aqui de frases que tenho de digitar sempre que vou ajudar.
+
+Simplesmente Gestures de Bate papo puro.
+
+Você podera , por exemplo , organizar seus atalhos de Gestos assim:
+
+<CTRL><Fs> - utilitários de trabalho , explicações repetitivas que você da sempre.
+<Fs> - Gestures para ser usados em festas.
+<SHIFT><Fs> - Gestures de lojista
+
+Isto é apenas um exemplo!
+
+Organize a sua maneira! ;)
+
+TEXTURE|31a906d0-98d0-a70f-03b1-32007037bcda
+
+4.5 - Biblioteca
+
+Na biblioteca , estão os itens disponíveis para uso em seu Gesto.
+
+Para adicionar alguma funcionalidade em sua Gesto , primeiro você clica em algum item da biblioteca:
+
+TEXTURE|66e02636-ee04-2c80-abb4-b6b6e50b5387
+
+4.5.i - Animação
+
+As animações são itens que dão movimento ao seu avatar ... eles podem dançar por exemplo através de uma animação ou ainda fazer algum movimento engraçado , fazer seu avatar dar piruetas.
+
+Todo tipo de movimento em seu avatar você consegue com as animações
+
+Para incluir uma animação de sua biblioteca clique em animação em sua Biblioteca e depois o botão Incluir.
+
+Feito isso escolha a animação de sua preferência da caixa de seleção.
+
+Existem as opções iniciar ou parar a animação escolhida.
+
+TEXTURE|19359327-cc88-dc8c-099b-d9cb44413573
+
+4.5.ii - Som 
+
+Um som é um item de biblioteca usado para animar o ambiente , por exemplo em festas.
+
+Quando um som é tocado no Gesto é escutado por todos próximos ao avatar.
+
+Para incluir um som clique em Som na Biblioteca e depois no botão Incluir.
+
+Feito isso escolha o som na caixa de seleção "Executar Som".
+
+TEXTURE|5f8ced21-d76d-e655-c884-38b03d29ebfc
+
+4.5.iii - Bate papo
+
+Um bate papo é um texto que é disparado em uma gesture , que vai para o chat público.
+
+Para incluir um texto no chat através de um Gesto Clique em Bate-Papo na Biblioteca de depois clique no botão Incluir.
+
+Aparecerá uma caixa de texto "Executar Bate-Papo" , basta escrever o texto que vai aparecer nesta caixa.
+
+TEXTURE|1f42c028-2908-ab8d-a574-415b1ac9d5bb
+
+4.5.iv - Espere
+
+Espere é um tempo de espera usado entre os disparos de itens da biblioteca que foram adicionados.
+
+Existem as opções :
+
+-Até que as animações sejam concluídas
+-Segundos ... você configura o número de segundos de espera na caixa e este número é com ponto flutuante , no caso aqui será usado ponto e não vírgula para valores decimais.Isso é chatinho mas é a forma como americanos usam.
+
+TEXTURE|2879e1fe-5820-0a34-3934-4b1476e75d25
+
+4.6 - O Botão Incluir
+
+O botão é usado para incluir itens de biblioteca em seu Gesto.
+
+Itens de Gesture ao serem incluídos no Gesto aparecem em "passos"!
+
+TEXTURE|a8c8c71a-ec2d-0d98-6d5a-fa6f934f261b
+
+4.7 - Passos 
+
+Mostra quais foram os itens de biblioteca incluídos no Gesto e sua sequência.
+
+TEXTURE|5ac8bd2e-65f8-a520-35c5-0b43f0bf9f03
+
+4.8 - P/cima
+
+Coloca o item de biblioteca incluído em sequência de execução um passo acima ( um passo antes ).
+
+4.9 - P/baixo
+
+Coloca o item de biblioteca incluído em sequência de execução um "passo" abaixo ( um passo depois ).
+
+4.10 - Remover
+
+Remove o item selecionado em "passos" da sequência de execução do Gesto.
+
+TEXTURE|4fca502d-7000-1557-a227-a098163bbf34
+
+4.11 - Ativar
+
+Ativa os gatilhos e atalhos de uma Gesture selecionada.
+
+Caso detecte um gatilho ou for usado os atalhos , o Gesto é acionado.
+
+Caso esteja sem "X" , esta opção , ela está inativa.
+
+TEXTURE|91cb01af-fa1e-2914-7df5-6bedc08c2c57
+
+4.12 - Prévia
+
+Executa uma prévia do Gesto ( um preview )
+
+TEXTURE|dfc276ab-cfeb-ee0f-fd89-76ac98741a42
+
+4.13 - Salvar
+
+Salva a Gesture no inventário
+
+5-Criando Gestos
+
+Existem algumas formas de se criar um gesto.
+
+Dentre elas:
+
+5.1-Através da Janela Gestos.
+5.2-Através do clique do botão direito no inventário.
+
+Primeiramente ...
+
+TEXTURE|abfd20cb-54ab-14ae-1af0-c763d34b2f55
+
+5.1 - Através da janela Gestos
+
+1º - Clique no botão Gestos na barra de ferramentas inferior.
+
+2º - Clique no "+" na janela Gestos.
+
+3º - Na janela novo gesto , configure sua gesture.
+
+4º - Vá ao inventário na pasta de sistemas Gestos e você verá uma Gesture com o nome "Novo gesto" e com um clique do botão direito escolha renomear ... renomeie sua Gesture ( dê um nome significativo a ela ).
+
+A outra forma ...
+
+TEXTURE|94015782-7d57-579c-d387-98594f793f01
+
+5.2 - Através do clique com botão  no inventário.
+
+1º - abra seu inventário clicando em seu botão respectivo que por padrão no viewer 3 , o viewer oficial do sl , fica da barra de ferramentas esquerda e tem o símbolo de uma mala.
+
+2º - Aberto o inventário procure a pasta de sistema com nome Gestos , ou ainda , uma pasta de sua preferência.
+
+TEXTURE|1f42c028-2908-ab8d-a574-415b1ac9d5bb
+
+3º - Clique com o botão direito nesta pasta e escolha a opção "Novo Gesto".
+Verá que no inventário foi criado uma Gesture com nome "Novo gesto" e foi aberta a janela "Gesto:Novo gesto"
+
+4º - Faça a configuração de seu Gesto como preferir.
+
+TEXTURE|95491d6a-2299-e37b-9621-3035e41c94a8
+
+6-Exemplo de animação e som ( meu <CTRL><F2> ).
+
+Eu tenho um Gesto em meu invetário que atende pelo atalho <CTRL><F2>
+
+Ele foi salvo na minha pasta de sistema Gestos , com o nome de "Alguém precisa de ajuda? ( CTRL F2 )".
+
+Ele simplesmente dispara o texto "Alguém precisa de ajuda????" no chat público quando teclo <CTRL><F2> , e , foi uma solução para não ter de ficar digitando a frase "Alguém precisa de ajuda????" sempre que chega alguém na Ilha da Ajuda .
+
+Uma solução interessante para coisas que você tem de ficar escrevendo sempre e repetitivamente.
+
+TEXTURE|390ec6e0-9c33-f9ed-578f-5c7d39ccbd00
+
+Fiz da seguinte forma:
+
+1º - Cliquei no inventário 
+
+2º - Fui na pasta de sistemas Gestos.
+
+3º - Cliquei com o botão direito na pasta Gestos e escolhi no menu a opção "Novo gesto".
+
+4º - Renomeei meu novo gesto , com o nome "Alguém precisa de ajuda? ( CTRL F2 )".
+
+5º - Na janela Gesto:Novo gesto em descrição escrevi "Gesto que dispara o texto de ajuda na recepcao da ilha da ajuda feito em 02/03/2012 por Augustus Mathy".
+
+6º - Apaguei o "gatilho" que vem por default escrito "/hey".
+
+7º - Apaguei o "trocar" por que vem por default escrito "Hey!".
+
+8º - Na primeira seleção , que tem no atalho , cliquei  o botão esquerdo e escolhi "Ctrl".
+
+9º - Na segunda seleção , que tem no atalho , cliquei com o botão esquerdo e escolhi "F2".
+
+10º - Fui em passos e por padrão existem dois passos quando se cria uma animação no atual viewer 3 oficial , peguei e cliquei  o botão esquerdo em um dos passos.
+
+11º -  Cliquei com o botão esquerdo no botão "Remover".
+
+12º - Repeti os passos 10 e 11 novamente para o segundo passo , deixando assim Passos sem nenhum item de biblioteca.
+
+13º - Em Biblioteca , cliquei com  o botão esquerdo em Bate-papo.
+
+14º - Cliquei com  o botão esquerdo no Incluir.Em passos você pode ver que foi incluído um item de Bate-papo.
+
+15º - Em baixo de passos apareceu uma caixa de texto com nome "Executar bate-papo:" , escrevi a frase "Alguém precisa de ajuda????".
+
+16º - Cliquei com o botão esquerdo no botão "Prévia" , e o Gesto foi executado como esperava.
+
+17º - Cliquei com o botão esquerdo em "Ativar" , deixando assim meu Gesto ativado para ser usado quando teclasse <CTRL><F2>.
+
+18º - Cliquei co o botão esquerdo no "Salvar" , salvando as configurações de meu Gesto em meu inventário.
+
+Simples!
+
+Meu Gesto está pronto para ser usado agora , quando acionar as teclas de atalho referentes a ele.
+
+7-Criando as gestures "sim / não".
+
+Em meu avatar tenho os Gestos Sim e Não.
+
+O Gesto "sim" dispara quando digito no chat público a palavra "sim" que é trocada pela palavra "sim" ( caso contrário esta palavra não apareceria ).
+Em seus passos ela toca in - world , uma animação que faz movimento de "sim" com a cabeça de meu avatar.
+Outro passo ele toca in - world , um som "sim" que foi gravado préviamente com a minha voz.
+
+Com o Gesto "não" a mesma coisa , só que agora com a palavra "não".
+
+Deixo para que vocês façam em casa o sim e o não.As animações e os sons vieram junto com o material de aula.
+
+8-Preferências  <CTRL><P>
+
+Infelizmente estou ainda a procura de informações sobre uma opção existente em <CTRL><P> sobre Gesto.
+
+Até o presente momento não consegui levantar informações.
+
+TEXTURE|d6c37974-a6db-c039-91e6-35a6b21c5f07
+
+Apêndice A - Criando Animação ( QAVIMATOR ).
+
+Para criar animações , um dos softwares usados é o QAVIMATOR.
+
+Você consegue maiores informações sobre ele em:
+http://qavimator.org/
+
+Este software de criação de animações é free ( Gratúito )
+
+e no site o download fica em :
+
+http://qavimator.org/#download
+
+escolha a versão apropriada ao seu sistema.
+
+TEXTURE|3209f674-6692-1136-f742-ef5c72302fcd
+
+Apêndice B - Criando sons ( AUDACITY ).
+
+O Audacity é um software que é usado para criar sons ou até mesmo para gravações de seu microfone ou computador.
+
+Eu tive um podcast um tempo atrás e nós usamos o Audacity para gravar o podcast enquanto conversavamos no Skype
+
+o Site do Audacity é:
+
+http://manual.audacityteam.org/man/Main_Page
+
+Você consegue fazer o download apropriado ao seu sistema em:
+
+http://manual.audacityteam.org/man/Unzipping_the_Manual
+
+Apêndice C - Alguns links úteis
+
+http://wiki.secondlife.com/wiki/Using_gestures_and_animations/pt
+http://pt.wikipedia.org/wiki/Meme
+
+http://www.youtube.com/watch?v=6WKo4G8aQBc&feature=player_embedded
+http://www.youtube.com/watch?v=RZgz1KNQKMc&feature=player_embedded
+http://www.youtube.com/watch?v=WplYhxyFd3M&feature=player_embedded
+http://www.youtube.com/watch?v=Qa7-aRi4VpE&feature=player_embedded
+
+TEXTURE|cc16c6e9-6e18-3ab5-4254-670cd8caf547
+
+9-Considerações finais!!!
+
+
+Obrigado por terem assistido aqui comigo a esta aula sobre Gestos e quero dizer que foi um prazer para mim e a Ilha da Ajuda ter vocês como alunos.
+
+E gostaria de dizer que além da aula de Gestos ministro aqui um curso sobre programação de Second Life ( "LSL").
+Agradecemos sua presença ... foi um imenso prazer para mim.
+
+TEXTURE|8deb906f-39f5-35df-b7e9-28a58149b55c
+
+Para finalizar , a ilha vive de donativos ... na entrada da Ilha há um tip jar ( objeto que se paga para doar L$ ) é interessante que doasse algum valor qualquer de sua escolha.
+
+TEXTURE|dd533e6e-c672-e536-abec-74b315d9cff2
+
+Existe um tip jar também no anfiteatro.
+
+Finalizo aqui a aula!
+
+Realmente obrigado pela sua presença.
+
+TEXTURE|ae197897-5cc6-8c8b-6e8c-dd487a5c73d9
+

@@ -1,0 +1,124 @@
+integer gIntegerLine = 0;
+integer gIntegerRandomChannel;
+integer gIntegerChannel = -6666;
+integer gIntegerOldListen;
+
+float gFloatTime = 3.0;
+
+key gKeyRequest;
+
+string gStringNotecardName = "%Aula de Gestures - por Augustus Mathy";
+
+default
+{
+
+    state_entry()
+    {
+        
+        llSay( PUBLIC_CHANNEL , "Initializing..." );
+        
+        gIntegerOldListen = llListen( -6666 , "" , "" , ""  );    
+        
+    }
+    
+    listen( integer pIntegerChannel , string pStringName , key pKeyID , string pStringMessage )
+    {
+        
+        if( ( pIntegerChannel == gIntegerChannel ) && ( llGetOwnerKey( pKeyID ) == llGetOwner( ) ) && ( llGetSubString( pStringMessage , 0 , llStringLength( "CHANNEL|" ) - 1 ) == "CHANNEL|" ) )
+        {
+            
+            llListenRemove( gIntegerOldListen );
+            
+            llSay( PUBLIC_CHANNEL , "Setting a new channel!") ;
+            
+            gIntegerRandomChannel = (integer)llGetSubString( pStringMessage , llStringLength( "CHANNEL|" ) , llStringLength( pStringMessage ) );
+
+            gIntegerOldListen = llListen( gIntegerRandomChannel + 1, "" , llGetOwner() , "" );
+
+            llSay( PUBLIC_CHANNEL , "New channel is OK.") ;
+            
+        }
+        
+    }
+    
+    timer()
+    {
+     
+        gKeyRequest = llGetNotecardLine( gStringNotecardName , gIntegerLine++ );                   
+        
+    }
+        
+    dataserver( key pKeyQuery , string pStringData )
+    {
+        
+        if( pStringData == EOF )
+        {
+            
+            llSay( PUBLIC_CHANNEL , "Aula Terminada!" );
+        
+            llSay( gIntegerRandomChannel , "TEXTURE|ae197897-5cc6-8c8b-6e8c-dd487a5c73d9" );
+            
+            gIntegerLine = 0;
+            
+            llSetTimerEvent( 0.0 );
+            
+            llPlaySound( "4e57e33a-d314-6160-38a1-5fa614bf9b0a" , 1.0 );
+            
+            jump theEnd;
+            
+        }
+            
+        if( gKeyRequest == pKeyQuery )
+        {
+                
+            if( llGetSubString(pStringData , 0 , llStringLength( "TEXTURE|" ) - 1 ) == "TEXTURE|" )
+            {
+                
+                llSay( gIntegerRandomChannel , pStringData );
+                
+            }
+            else
+            {
+                
+                llSay ( PUBLIC_CHANNEL , pStringData );
+            
+            }
+                
+        }
+        
+        @theEnd;
+        
+        
+    }
+    
+    link_message(integer pIntegerSenderNum , integer pIntegerNum , string pStringMessage , key pKeyID )
+    {
+        
+        if( pIntegerNum== 100 )
+        {
+            
+            llSetTimerEvent( 0.0 );
+        
+            llPlaySound( "!Parando" , 1.0 );            
+            
+        }
+        else
+        {
+            
+            llSetTimerEvent( gFloatTime );
+        
+            llPlaySound( "!Iniciando" , 1.0 );   
+            
+        }
+            
+    }
+        
+    attach( key pKeyAVID )
+    {
+            
+        llResetScript();
+    
+    }
+        
+}
+

@@ -1,0 +1,184 @@
+integer gIntegerMenu = -600;
+integer gIntegerClassMenu = -700;
+integer gIntegerAddToListChannel = -800;
+integer gIntegerClassMenuRemove = -900;
+integer gIntegerRelease;
+
+list gListClassName = [];
+list gListClassKey = [];
+list gListDetectedName = [];
+list gListDetectedKey = [];
+
+gProcedureMenu( integer pIntegerChannel )
+{
+ 
+    llSetTimerEvent( 15.0 );
+        
+    gIntegerRelease = llListen( pIntegerChannel , "" , llGetOwner(), "" );       
+    
+}
+
+gProcedureRelease()
+{
+
+    llOwnerSay("OK.");
+        
+    llListenRemove( gIntegerRelease ); 
+    
+    llSetTimerEvent( 0.0 );       
+    
+}
+
+default
+{
+    
+    state_entry()
+    {
+        
+        llOwnerSay( "Rodou!" );
+        
+    }
+    
+    touch_start(integer total_number)
+    {
+        
+        llDialog( llGetOwner() , "Chose your option?" , [ "Reset" , "Class" ] , gIntegerMenu );
+        
+        gProcedureMenu( gIntegerMenu );
+        
+    }
+    
+    timer()
+    {
+        
+        gProcedureRelease();
+        
+    }
+    
+    listen( integer pIntegerChannel , string pStringName , key pKeyID, string pStringMessage )
+    {
+        
+        llOwnerSay( "Foi dito:" + pStringMessage + " no canal:" + (string)pIntegerChannel );
+        
+        if( pIntegerChannel == gIntegerMenu )
+        {
+            
+            if( pStringMessage == "Reset" )
+            {
+                
+                //Reseta todos os scripts                   
+            }
+            
+            if( pStringMessage == "Class" )   
+            {
+                
+                llDialog( llGetOwner() , "Chose your option?" , [ "Add to Class" , "Remove From Class" , "List the Class" ] , gIntegerClassMenu );
+             
+            
+                gProcedureMenu( gIntegerClassMenu );
+            
+            }
+            
+        }
+            
+        if( pIntegerChannel == gIntegerClassMenu )
+        {
+         
+            if( pStringMessage == "List the Class" )   
+            {
+                
+                llOwnerSay( "Listando a classe." );
+                
+                integer pIntegerIndex;
+                
+                for( pIntegerIndex = 0 ; pIntegerIndex < llGetListLength( gListClassName ) ; pIntegerIndex++ )
+                    llOwnerSay( "The avatar " + llList2String( gListClassName , pIntegerIndex ) + " is in the list.");
+                
+            }
+                
+            if( pStringMessage == "Add to Class" )
+            {
+                
+                //manda um sensor ver quem está perto
+                llSensor( "" , "" , AGENT , 30.0 , TWO_PI );
+                
+            }
+                
+            if( pStringMessage == "Remove From Class" )
+            {
+                
+                //manda uma lista com os avatares na lista que podem ser removidos
+
+                llDialog( llGetOwner() , "Choose a avatar to remove from the list?" , gListClassName , gIntegerClassMenuRemove );
+            
+                gProcedureMenu( gIntegerClassMenuRemove );
+            
+            }
+        
+        }
+            
+        if( pIntegerChannel == gIntegerClassMenuRemove )
+        {
+        
+            //Remove o avatar
+        
+            list pListAuxOne = [];
+            list pListAuxTwo = [];
+            list pListAuxOneKey = [];
+            list pListAuxTwoKey = [];
+        
+            integer pIntegerIndex = llListFindList( gListClassName , (list)pStringMessage );
+            
+            pListAuxOne = llList2List( gListClassName , 0 , pIntegerIndex -1 );
+            pListAuxTwo = llList2List( gListClassName , pIntegerIndex + 1 , llGetListLength( gListClassName ) );
+            pListAuxOneKey = llList2List( gListClassKey , 0 , pIntegerIndex -1 );
+            pListAuxTwoKey = llList2List( gListClassKey , pIntegerIndex + 1 , llGetListLength( gListClassKey ) );
+        
+            gListClassName = pListAuxOne + pListAuxTwo;
+            gListClassKey = pListAuxOneKey + pListAuxTwoKey;
+        
+        }
+            
+        if( pIntegerChannel == gIntegerAddToListChannel )
+        {
+         
+            llOwnerSay( "Disparando o canal de adicionar" );
+        
+            integer pIntegerIndex = llListFindList( gListDetectedName , (list)pStringMessage );
+        
+            gListClassName += llList2List( gListDetectedName , pIntegerIndex , pIntegerIndex );
+            gListClassKey += llList2List( gListDetectedKey , pIntegerIndex , pIntegerIndex );
+        
+        
+        }
+        
+    }
+        
+    sensor( integer pIntegerID )
+    {
+        
+        llOwnerSay( "Disparou o sensor" );
+        
+        integer pIntegerIndex;
+        
+        gListDetectedName = [];
+        gListDetectedKey = [];
+        
+        for( pIntegerIndex = 0 ; pIntegerIndex < pIntegerID ; pIntegerIndex++)
+        {
+        
+            gListDetectedName += (list)llGetSubString( llDetectedName( pIntegerIndex ) , 0 , 10 );
+            gListDetectedKey += (list)llDetectedKey( pIntegerIndex );    
+            
+            llOwnerSay( llDetectedName( pIntegerIndex ) );
+        
+        }
+        
+        llDialog( llGetOwner() , "Choose the avatar to add to class?" , gListDetectedName , gIntegerAddToListChannel );
+        
+        gProcedureMenu( gIntegerAddToListChannel );
+
+    }
+    
+}
+
